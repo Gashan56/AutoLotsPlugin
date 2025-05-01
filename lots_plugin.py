@@ -168,6 +168,7 @@ def init_commands(cardinal: Cardinal):
             f"🟢 <b>Активировано:</b> <i>{activated}</i>\n"
             f"🔴 <b>Деактивировано:</b> <i>{deactivated}</i>\n"
             f"🗑 <b>Удалено:</b> <i>{deleted}</i>"
+            f"\n❤ Мне будет приятно, если вы напишите свой <a href="https://t.me/cardinal_PIugins/28">отзыв в тг</a>' или поставите звезду на <a href="https://github.com/Gashan56/AutoLotsPlugin">гитхаб</a>)"
         )
         keyboard = K()
         keyboard.add(B(
