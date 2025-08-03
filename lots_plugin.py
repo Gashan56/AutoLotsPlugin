@@ -17,7 +17,7 @@ from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 
 NAME = "LotPlugin"
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 DESCRIPTION = "Плагин для выполнения действий над лотами через тг-бота"
 CREDITS = "@gashan_official"
 UUID = "d6250637-8054-40c6-9eba-86d31c32a800"
@@ -75,22 +75,23 @@ def init_commands(cardinal: Cardinal):
 
         keyboard = K(row_width=2)
 
+        # Создаем список кортежей (название, id)
         categories = []
         for subcategory, lots in sorted_lots.items():
             if lots:
-                categories.append(subcategory.fullname)
+                categories.append((subcategory.fullname, subcategory.id))
 
         for i in range(0, len(categories), 2):
             row = []
             if i < len(categories):
                 row.append(B(
-                    text=categories[i],
-                    callback_data=f"{CBT_EDIT_CATEGORY}:{action}:{subcategory.id}"
+                    text=categories[i][0],  # Полное имя
+                    callback_data=f"{CBT_EDIT_CATEGORY}:{action}:{categories[i][1]}"  # ID подкатегории
                 ))
             if i + 1 < len(categories):
                 row.append(B(
-                    text=categories[i + 1],
-                    callback_data=f"{CBT_EDIT_CATEGORY}:{action}:{subcategory.id}"
+                    text=categories[i + 1][0],
+                    callback_data=f"{CBT_EDIT_CATEGORY}:{action}:{categories[i + 1][1]}"
                 ))
 
             if row:
