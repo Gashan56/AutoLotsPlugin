@@ -74,8 +74,6 @@ def init_commands(cardinal: Cardinal):
         sorted_lots = types.UserProfile.get_sorted_lots(mode=2, self=cardinal.account.get_user(cardinal.account.id))
 
         keyboard = K(row_width=2)
-
-        # Создаем список кортежей (название, id)
         categories = []
         for subcategory, lots in sorted_lots.items():
             if lots:
@@ -223,4 +221,5 @@ def init_commands(cardinal: Cardinal):
     tg.cbq_handler(handle_category_action, lambda c: f"{CBT_EDIT_CATEGORY}" in c.data)
     tg.cbq_handler(delete_lots, lambda c: f"{CBT_DELETE_LOTS}" in c.data)
 BIND_TO_PRE_INIT = [init_commands]
+
 BIND_TO_DELETE = []
